@@ -1,0 +1,16 @@
+<li [ngClass]="{'list-group-item': true,
+                  'list-group-item-success': getStatus() === 'On',
+                  'list-group-item-danger': getStatus() === 'Off'}">
+  <div style="height:20px;width:20px;background-color:red" *ngIf="getStatus()==='Off'"></div>
+  <h4 [ngStyle]="{color: getColor()}">Equipment: {{ equipmentName }} -- Status: {{ getStatus() }}</h4>
+  <a [routerLink]="[id]">Detail</a>
+  <input type="text" class="form-control" [(ngModel)]="equipmentName">
+  <input type="text" class="form-control" [(ngModel)]="equipmentStatus">
+
+  <button class="btn btn-sm btn-success"
+          *ngIf="equipmentStatus === 'Off'"
+          (click)="onSwitch()">On</button>
+  <button class="btn btn-sm btn-danger"
+          *ngIf="equipmentStatus === 'On'"
+          (click)="onSwitch()">Off</button>
+</li>

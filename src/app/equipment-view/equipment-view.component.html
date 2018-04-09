@@ -1,0 +1,14 @@
+<h2>My equipment</h2>
+<p>Last update: {{ lastUpdate | async | date: "short" }}</p>
+<ul class="list-group">
+  <app-equipment *ngFor="let equipment of equipments; let i = index"
+                  [equipmentName] = "equipment.name"
+                  [equipmentStatus] = "equipment.status"
+                  [index] = "i"
+                  [id] = "equipment.id"></app-equipment>
+</ul>
+<button class="btn btn-success" 
+        [disabled]="!isAuth"
+        (click)="onOn()">All on</button>
+<button class="btn btn-danger"
+        (click)="onOff()">All off</button>
